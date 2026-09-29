@@ -1,0 +1,240 @@
+{
+  "id": "rooms_and_zones",
+  "name": "Room temperatures and heating zones (name patterns)",
+  "priority": 40,
+  "roles": {
+    "Room_n": {
+      "device_class": "temperature",
+      "units": [
+        "°C",
+        "°F",
+        "C",
+        "F"
+      ],
+      "patterns": [
+        "room|bedroom|living|kitchen|playroom|office|lounge|hall|landing|bathroom|study|dining|nursery|attic|indoor"
+      ],
+      "excludes": [
+        "heat_pump",
+        "outdoor",
+        "water",
+        "tank",
+        "cpu",
+        "battery",
+        "dew",
+        "feels",
+        "target",
+        "setpoint",
+        "set_temp",
+        "_min",
+        "_max",
+        "average",
+        "mean"
+      ],
+      "domain": "sensor"
+    },
+    "Zone_1": {
+      "domain": "binary_sensor",
+      "patterns": [
+        "zone",
+        "underfloor|ufh",
+        "radiator.*(pump|valve|demand|call)",
+        "(pump|valve|actuator).*radiator",
+        "(heating|zone).*(demand|call|actuator)"
+      ],
+      "excludes": [
+        "heat_pump",
+        "primary",
+        "secondary",
+        "dhw",
+        "hot_water",
+        "boiler",
+        "circulation",
+        "motion",
+        "occupancy",
+        "presence",
+        "ias_zone",
+        "door",
+        "window",
+        "contact",
+        "tamper",
+        "alarm",
+        "battery",
+        "vibration"
+      ],
+      "exclude_device_classes": [
+        "motion",
+        "occupancy",
+        "presence",
+        "door",
+        "window",
+        "opening",
+        "garage_door",
+        "moisture",
+        "smoke",
+        "safety",
+        "tamper",
+        "vibration",
+        "sound",
+        "light",
+        "battery",
+        "connectivity",
+        "update",
+        "problem"
+      ]
+    },
+    "Zone_2": {
+      "domain": "binary_sensor",
+      "patterns": [
+        "zone",
+        "underfloor|ufh",
+        "radiator.*(pump|valve|demand|call)",
+        "(pump|valve|actuator).*radiator",
+        "(heating|zone).*(demand|call|actuator)"
+      ],
+      "excludes": [
+        "heat_pump",
+        "primary",
+        "secondary",
+        "dhw",
+        "hot_water",
+        "boiler",
+        "circulation",
+        "motion",
+        "occupancy",
+        "presence",
+        "ias_zone",
+        "door",
+        "window",
+        "contact",
+        "tamper",
+        "alarm",
+        "battery",
+        "vibration"
+      ],
+      "exclude_device_classes": [
+        "motion",
+        "occupancy",
+        "presence",
+        "door",
+        "window",
+        "opening",
+        "garage_door",
+        "moisture",
+        "smoke",
+        "safety",
+        "tamper",
+        "vibration",
+        "sound",
+        "light",
+        "battery",
+        "connectivity",
+        "update",
+        "problem"
+      ]
+    },
+    "Zone_3": {
+      "domain": "binary_sensor",
+      "patterns": [
+        "zone",
+        "underfloor|ufh",
+        "radiator.*(pump|valve|demand|call)",
+        "(pump|valve|actuator).*radiator",
+        "(heating|zone).*(demand|call|actuator)"
+      ],
+      "excludes": [
+        "heat_pump",
+        "primary",
+        "secondary",
+        "dhw",
+        "hot_water",
+        "boiler",
+        "circulation",
+        "motion",
+        "occupancy",
+        "presence",
+        "ias_zone",
+        "door",
+        "window",
+        "contact",
+        "tamper",
+        "alarm",
+        "battery",
+        "vibration"
+      ],
+      "exclude_device_classes": [
+        "motion",
+        "occupancy",
+        "presence",
+        "door",
+        "window",
+        "opening",
+        "garage_door",
+        "moisture",
+        "smoke",
+        "safety",
+        "tamper",
+        "vibration",
+        "sound",
+        "light",
+        "battery",
+        "connectivity",
+        "update",
+        "problem"
+      ]
+    },
+    "Zone_4": {
+      "domain": "binary_sensor",
+      "patterns": [
+        "zone",
+        "underfloor|ufh",
+        "radiator.*(pump|valve|demand|call)",
+        "(pump|valve|actuator).*radiator",
+        "(heating|zone).*(demand|call|actuator)"
+      ],
+      "excludes": [
+        "heat_pump",
+        "primary",
+        "secondary",
+        "dhw",
+        "hot_water",
+        "boiler",
+        "circulation",
+        "motion",
+        "occupancy",
+        "presence",
+        "ias_zone",
+        "door",
+        "window",
+        "contact",
+        "tamper",
+        "alarm",
+        "battery",
+        "vibration"
+      ],
+      "exclude_device_classes": [
+        "motion",
+        "occupancy",
+        "presence",
+        "door",
+        "window",
+        "opening",
+        "garage_door",
+        "moisture",
+        "smoke",
+        "safety",
+        "tamper",
+        "vibration",
+        "sound",
+        "light",
+        "battery",
+        "connectivity",
+        "update",
+        "problem"
+      ]
+    }
+  },
+  "notes": [
+    "Rooms and zones are suggested in name order; check which room belongs to which zone."
+  ]
+}

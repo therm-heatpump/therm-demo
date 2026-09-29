@@ -1,0 +1,22 @@
+{
+  "id": "metered_power",
+  "name": "Metered heat pump power (Shelly / CT clamp / energy meter)",
+  "priority": 10,
+  "role_provenance": {
+    "Power": "separate_meter"
+  },
+  "roles": {
+    "Power": {
+      "device_class": "power",
+      "units": ["W", "kW", "w", "kw"],
+      "patterns": [
+        "(heat_?pump|ashp|\\bhp\\b|_hp_|^hp_).*(ch\\d|channel|meter|clamp|ct\\d?\\b|shelly|pzem|em\\d)",
+        "(shelly|pzem|clamp|\\bct\\d?|em\\d).*(heat_?pump|ashp|_hp_|^hp_|_hp$)"
+      ],
+      "excludes": ["indoor", "generat", "heat_output", "thermal", "yesterday", "daily", "monthly", "total", "cost", "kwh", "reactive", "apparent"]
+    }
+  },
+  "notes": [
+    "An external electricity meter on the heat pump supply is preferred over the heat pump's own power estimate."
+  ]
+}

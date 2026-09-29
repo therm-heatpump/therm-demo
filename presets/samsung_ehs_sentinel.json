@@ -1,0 +1,31 @@
+{
+  "id": "samsung_ehs_sentinel",
+  "name": "Samsung EHS via EHS-Sentinel (HACS integration / MQTT)",
+  "priority": 20,
+  "match": {"platform": "ehs_sentinel"},
+  "role_provenance": {"Power": "heat_pump_estimate"},
+  "sources": [
+    "https://github.com/echoDaveD/ehs_sentinel_hacs_integration (custom_components/ehs_sentinel/data/nasa_repository.yml)",
+    "https://github.com/echoDaveD/EHS-Sentinel (archived MQTT bridge; camel-case topic names slugify to e.g. nasaindoorwaterouttemp)"
+  ],
+  "roles": {
+    "FlowTemp": {"keys": ["nasa_indoor_water_out_temp", "nasaindoorwaterouttemp", "hydro_waterout", "var_in_temp_water_out_f"], "device_class": "temperature"},
+    "ReturnTemp": {"keys": ["nasa_indoor_water_in_temp", "nasaindoorwaterintemp", "hydro_waterin", "var_in_temp_water_in_f"], "device_class": "temperature"},
+    "OutdoorTemp": {"keys": ["nasa_outdoor_out_temp", "nasaoutdoorouttemp", "outdoor_temp"], "device_class": "temperature"},
+    "FlowRate": {"keys": ["var_in_flow_sensor_calc", "nasa_indoor_flow_sensor_calc", "varinflowsensorcalc"]},
+    "Freq": {"keys": ["nasa_outdoor_comp1_run_hz", "nasaoutdoorcomp1runhz", "current_frequency_1"]},
+    "Power": {"keys": ["nasa_outdoor_control_wattmeter_all_unit", "nasaoutdoorcontrolwattmeterallunit"], "device_class": "power"},
+    "DHW_Temp": {"keys": ["nasa_indoor_dhw_current_temp", "nasaindoordhwcurrenttemp", "dhw_tank_current_temperature"], "device_class": "temperature"},
+    "Target_Flow": {"keys": ["var_in_temp_water_law_target_f", "varintempwaterlawtargetf"]},
+    "ValveMode": {"keys": ["nasa_dhw_valve", "nasadhwvalve", "hydro_3way"]},
+    "Defrost": {"keys": ["nasa_outdoor_defrost_step", "nasaoutdoordefroststep"]}
+  },
+  "comparison": {
+    "Engine_Heat_Power": {"keys": ["nasa_ehssentinel_heat_output", "nasaehssentinelheatoutput"]},
+    "Engine_COP": {"keys": ["nasa_ehssentinel_cop", "nasaehssentinelcop"]}
+  },
+  "notes": [
+    "EHS-Sentinel's 3-way valve reads ROOM (heating) / TANK (DHW).",
+    "NASA_OUTDOOR_TW2_TEMP is a water temperature at the plate heat exchanger, not the outdoor air temperature."
+  ]
+}

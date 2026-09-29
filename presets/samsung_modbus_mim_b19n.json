@@ -1,0 +1,31 @@
+{
+  "id": "samsung_modbus_mim_b19n",
+  "name": "Samsung EHS via Modbus (MIM-B19N) – HA modbus YAML",
+  "priority": 20,
+  "match": {"platform": "modbus"},
+  "sources": [
+    "https://github.com/ZimKev/MIM-B19n_Modbus (modbus.yaml: EHS_* names)",
+    "https://github.com/Warm-Energy/Heat-Pump-Modbus-Database (src/samsung/modbus_registers.json)",
+    "Common hand-written HA YAML (heat_pump_* names)"
+  ],
+  "roles": {
+    "FlowTemp": {"keys": ["ehs_water_out_temp", "water_out_temp", "water_outlet_temperature", "flow_temperature", "flow_temp"], "device_class": "temperature",
+                  "excludes": ["set", "target"]},
+    "ReturnTemp": {"keys": ["ehs_water_in_temp", "water_in_temp", "water_inlet_temperature", "return_temperature", "return_temp"], "device_class": "temperature"},
+    "OutdoorTemp": {"keys": ["ehs_outside_temp", "outdoor_temperature", "outside_temperature", "outdoor_air_temperature", "outdoor_temp"], "device_class": "temperature"},
+    "FlowRate": {"keys": ["ehs_water_flow", "flow_rate", "water_flow", "water_flow_rate"]},
+    "Freq": {"keys": ["ehs_compressor_current_frequency", "compressor_current_frequency", "compressor_frequency"]},
+    "Target_Flow": {"keys": ["ehs_water_law_target_temp", "water_law_target_temperature", "water_law_target_temp"]},
+    "DHW_Temp": {"keys": ["ehs_hot_water_temp", "hot_water_temperature", "dhw_temperature", "dhw_tank_temperature", "tank_temperature"], "device_class": "temperature"},
+    "Indoor_Power": {"keys": ["indoor_power", "indoor_unit_power"], "device_class": "power"},
+    "ValveMode": {"keys": ["3way_valve_position_value", "3_way_valve_position_value", "ehs_3_way_valve_position", "3way_valve_position", "3_way_valve_position", "three_way_valve"]},
+    "Defrost": {"keys": ["ehs_defrost_operation", "defrost_status", "defrost_operation", "defrost"]},
+    "DHW_Mode": {"keys": ["hot_water_mode_value", "ehs_hot_water_mode", "hot_water_mode", "dhw_mode"]},
+    "DHW_Active": {"keys": ["hot_water_status_value", "hot_water_status", "dhw_status"]},
+    "Immersion_Mode": {"keys": ["immersion_heater_mode_value", "ehs_booster_heater", "immersion_heater_mode", "booster_heater"]}
+  },
+  "notes": [
+    "Samsung Modbus register 68 (water out set temperature) is the fixed set-point, not the live water-law target; use register 91 (EHS_Water_Law_Target_temp) for Target_Flow.",
+    "A numeric 3-way valve (register 89 / 0x4067) reads 0 = heating, 1 = DHW."
+  ]
+}

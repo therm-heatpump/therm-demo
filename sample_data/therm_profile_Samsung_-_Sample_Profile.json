@@ -1,0 +1,139 @@
+{
+  "physics_thresholds": {
+    "fluid_specific_heat_kj": 3.9,
+    "power_on_W": 150.0,
+    "coast_down_window_min": 5.0,
+    "min_flow_rate_lpm": 3.0,
+    "delta_on_C": 1.0,
+    "freq_on_hz": 10.0,
+    "freq_off_hz": 5.0,
+    "flow_on_lpm": 2.0,
+    "flow_off_lpm": 1.0,
+    "delta_coast_min_C": 0.5,
+    "min_freq_for_delta_t": 5.0,
+    "min_freq_for_heat": 7.5,
+    "max_valid_delta_t": 15.0,
+    "min_valid_delta_t": 0.2
+  },
+  "therm_version": "2.0",
+  "profile_name": "Samsung - Sample Profile",
+  "timezone": "Europe/Dublin",
+  "tariff_structure": {
+    "day_rate": 0.33,
+    "night_rate": 0.08,
+    "night_start": "02:00",
+    "night_end": "06:00"
+  },
+  "ai_context": {
+    "hp_model": "Samsung Gen 6 Heat Pump with Joule DHW cylinder\nFSV Settings\n103* \u2013 Water Out Temp. for Heat, Max: 43\u00b0C, Min: 22\u00b0C\n104* \u2013 Room Temp. for Heat, Max: 24\u00b0C, Min: 16\u00b0C\n201* \u2013 Outdoor Temp. for Water Law (Heat), Low: 14\u00b0C, High: -2\u00b0C",
+    "property_context": "175sqm, Detatched 4 bedroom house, A1 rated. \n3 zones - Underfloor, Downstairs Radiators, Upstairs Radiators",
+    "operational_goals": "Maximise use of heat pump during low cost period, use underfloor zone as heat battery, ensure comfort at lowest cost (even at the expense of COP)"
+  },
+  "rooms_per_zone": {
+    "Zone_1": [
+      "Room_1"
+    ],
+    "Zone_2": [
+      "Room_2",
+      "Room_3",
+      "Room_4"
+    ],
+    "Zone_3": [
+      "Room_5",
+      "Room_7"
+    ],
+    "Zone_4": []
+  },
+  "thresholds": {
+    "minimum_run_duration_min": 5.0,
+    "short_cycle_min": 20.0,
+    "very_short_cycle_min": 10.0,
+    "flow_limit_tolerance": 2.0,
+    "flow_limit_min_duration": 15.0,
+    "dhw_scop_low": 2.2,
+    "heating_during_dhw_power_threshold": 120.0,
+    "heating_during_dhw_detection_pct": 0.15,
+    "hdd_base_temp": 18.0,
+    "flow_over_43c_pct_high": 20.0,
+    "min_heating_run_minutes_with_no_zones": 8.0,
+    "min_heating_run_heat_kwh_with_no_zones": 0.25,
+    "high_night_share": 0.5
+  },
+  "units": {
+    "Power": "W",
+    "FlowTemp": "degC",
+    "ReturnTemp": "degC",
+    "FlowRate": "L/min",
+    "OutdoorTemp": "degC",
+    "Zone_1": "0/1",
+    "Zone_2": "0/1",
+    "Zone_3": "0/1",
+    "ValveMode": "Text",
+    "Freq": "Hz",
+    "Defrost": "0/1",
+    "DHW_Active": "0/1",
+    "DHW_Mode": "Text/Binary",
+    "DHW_Temp": "degC",
+    "Indoor_Power": "W",
+    "Immersion_Mode": "0/1",
+    "Outdoor_Humidity": "%",
+    "Solar_Rad": "W/m2",
+    "Wind_Speed": "m/s"
+  },
+  "mapping": {
+    "Power": "heat_pump_power_ch1",
+    "FlowTemp": "heat_pump_flow_temperature",
+    "ReturnTemp": "heat_pump_return_temperature",
+    "FlowRate": "heat_pump_flow_rate",
+    "OutdoorTemp": "heat_pump_outdoor_temperature",
+    "Room_1": "ecowitt_weather_indoor_temperature",
+    "Room_2": "playroom_temp_humidity_sensor_temperature",
+    "Room_3": "living_room_temp_humidity_temperature",
+    "Room_4": "heat_pump_temp_humidity_sensor_temperature",
+    "Room_5": "bedroom1_temp_humidity_sensor_temperature",
+    "Room_7": "bedroom2_temp_humidity_sensor_temperature",
+    "Zone_1": "underfloor_pump",
+    "Zone_2": "downstairs_radiator_pump",
+    "Zone_3": "upstairs_radiator_pump",
+    "ValveMode": "heat_pump_3way_valve_position_value",
+    "Freq": "heat_pump_compressor_frequency",
+    "Defrost": "heat_pump_defrost_status",
+    "DHW_Active": "heat_pump_hot_water_status_value",
+    "DHW_Mode": "heat_pump_hot_water_mode_value",
+    "DHW_Temp": "heat_pump_hot_water_temperature",
+    "Indoor_Power": "heat_pump_indoor_power",
+    "Immersion_Mode": "heat_pump_immersion_heater_mode_value",
+    "Outdoor_Humidity": "ecowitt_weather_humidity",
+    "Solar_Rad": "ecowitt_weather_solar_radiation",
+    "Wind_Speed": "ecowitt_weather_wind_speed"
+  },
+  "currency": "\u20ac",
+  "config_history": [
+    {
+      "start": "2025-12-04T00:00:00",
+      "config_tag": "Sequential Schedule 2",
+      "change_note": "DHW Day 13:00-13:59, Heating D/S Thermostat 13:00-14:00 @ 17.5C"
+    },
+    {
+      "start": "2025-12-01T00:00:00",
+      "config_tag": "Sequential Schedule",
+      "change_note": "DHW Night 02:00-03:00, Heating U/F 03:00-06:00"
+    },
+    {
+      "start": "2025-11-30T00:00:00",
+      "config_tag": "ata Fix & DHW Tuning",
+      "change_note": "HA Helpers updated. DHW Target 50C"
+    },
+    {
+      "start": "2025-11-28T00:00:00",
+      "config_tag": "Pump & Hydraulic Fix",
+      "change_note": "Primary/Secondary Pumps to Constant Speed II"
+    },
+    {
+      "start": "2023-01-01T00:00:00",
+      "config_tag": "Baseline",
+      "change_note": "Initial commissioning"
+    }
+  ],
+  "exported_at": "2025-12-10T23:06:19.734192"
+}

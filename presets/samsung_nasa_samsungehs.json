@@ -1,0 +1,107 @@
+{
+  "id": "samsung_nasa_samsungehs",
+  "name": "Samsung EHS (NASA) via ha-samsungehs",
+  "match": {
+    "platform": "samsungehs"
+  },
+  "role_provenance": {
+    "Power": "heat_pump_estimate"
+  },
+  "roles": {
+    "FlowTemp": {
+      "keys": [
+        "leaving_water_temperature",
+        "flow_temperature"
+      ],
+      "device_class": "temperature"
+    },
+    "ReturnTemp": {
+      "keys": [
+        "return_water_temperature",
+        "return_temperature"
+      ],
+      "device_class": "temperature"
+    },
+    "FlowRate": {
+      "keys": [
+        "flow_rate"
+      ]
+    },
+    "Target_Flow": {
+      "keys": [
+        "water_law_target_temperature",
+        "wl_target_temperature",
+        "flow_set_point_temperature",
+        "flow_setpoint_temperature"
+      ]
+    },
+    "Freq": {
+      "keys": [
+        "compressor_frequency"
+      ]
+    },
+    "DHW_Active": {
+      "keys": [
+        "indoor_dhw_on",
+        "dhw_active"
+      ],
+      "domain": "binary_sensor"
+    },
+    "Immersion_Mode": {
+      "keys": [
+        "indoor_booster_heater_on",
+        "booster_heater"
+      ],
+      "domain": "binary_sensor"
+    },
+    "OutdoorTemp": {
+      "keys": [
+        "outdoor_temperature"
+      ],
+      "device_class": "temperature"
+    },
+    "Power": {
+      "keys": [
+        "power_usage"
+      ],
+      "device_class": "power"
+    },
+    "Zone_1": {
+      "keys": [
+        "indoor_z1_heating_on",
+        "z1_heating_on",
+        "zone1_heating_on",
+        "zone_1"
+      ],
+      "domain": "binary_sensor",
+      "note": "Only reflects thermostats wired to the Samsung controller (FSV #2091) or its own two-zone control (FSV #4061)."
+    },
+    "Zone_2": {
+      "keys": [
+        "indoor_z2_heating_on",
+        "z2_heating_on",
+        "zone2_heating_on",
+        "zone_2"
+      ],
+      "domain": "binary_sensor",
+      "note": "Only reflects thermostats wired to the Samsung controller (FSV #2092) or its own two-zone control (FSV #4061)."
+    }
+  },
+  "comparison": {
+    "Engine_Heat_Power": {
+      "keys": [
+        "power_generation",
+        "heat_output"
+      ]
+    }
+  },
+  "notes": [
+    "Keep Modbus for ValveMode and Defrost: not exposed by samsungehs 1.0.0",
+    "Samsung's own power_usage (kW) is used for Power only when no metered power channel is found."
+  ],
+  "priority": 20,
+  "sources": [
+    "https://github.com/pantherale0/ha-samsungehs (custom_components/samsungehs/sensor.py, binary_sensor.py)",
+    "https://github.com/pantherale0/pysamsungnasa"
+  ]
+}

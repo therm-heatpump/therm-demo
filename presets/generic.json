@@ -1,0 +1,226 @@
+{
+  "id": "generic",
+  "name": "Generic Heat Pump",
+  "roles": {
+    "FlowTemp": {
+      "device_class": "temperature",
+      "contains": [
+        "flow",
+        "water_out",
+        "leaving_water",
+        "4238",
+        "lwt",
+        "water_outlet"
+      ],
+      "excludes": [
+        "target",
+        "set",
+        "return",
+        "inlet",
+        "room",
+        "ambient",
+        "outdoor",
+        "tank",
+        "dhw",
+        "rate"
+      ],
+      "units": [
+        "°C",
+        "°F",
+        "C",
+        "F"
+      ]
+    },
+    "ReturnTemp": {
+      "device_class": "temperature",
+      "contains": [
+        "return",
+        "water_in",
+        "4236",
+        "ewt",
+        "water_inlet"
+      ],
+      "excludes": [
+        "target",
+        "set",
+        "flow",
+        "outlet",
+        "room",
+        "ambient",
+        "outdoor",
+        "tank",
+        "dhw",
+        "rate"
+      ],
+      "units": [
+        "°C",
+        "°F",
+        "C",
+        "F"
+      ]
+    },
+    "Power": {
+      "device_class": "power",
+      "units": [
+        "W",
+        "kW",
+        "w",
+        "kw"
+      ],
+      "patterns": [
+        "(heat_pump|hp|compressor).*(power|elec)",
+        "(power|elec).*(heat_pump|hp|compressor)"
+      ],
+      "excludes": [
+        "yesterday",
+        "monthly",
+        "daily",
+        "total",
+        "energy",
+        "generation",
+        "heat_output",
+        "heat_power",
+        "thermal",
+        "indoor"
+      ]
+    },
+    "OutdoorTemp": {
+      "device_class": "temperature",
+      "contains": [
+        "outdoor",
+        "outside",
+        "ambient",
+        "8204"
+      ],
+      "excludes": [
+        "room",
+        "indoor",
+        "set",
+        "target"
+      ],
+      "units": [
+        "°C",
+        "°F",
+        "C",
+        "F"
+      ]
+    },
+    "FlowRate": {
+      "units": [
+        "L/min",
+        "l/min",
+        "L/h",
+        "l/h",
+        "m³/h",
+        "m3/h",
+        "lpm"
+      ],
+      "contains": [
+        "flow_rate",
+        "flowrate",
+        "42e9",
+        "water_flow"
+      ],
+      "excludes": [
+        "set",
+        "target"
+      ]
+    },
+    "Freq": {
+      "units": [
+        "Hz",
+        "hz"
+      ],
+      "contains": [
+        "compressor",
+        "8238"
+      ],
+      "excludes": [
+        "target",
+        "order",
+        "fan"
+      ]
+    },
+    "DHW_Temp": {
+      "device_class": "temperature",
+      "contains": [
+        "dhw",
+        "hot_water",
+        "tank",
+        "cylinder",
+        "4237"
+      ],
+      "excludes": [
+        "target",
+        "set",
+        "upper",
+        "lower",
+        "max",
+        "min"
+      ],
+      "units": [
+        "°C",
+        "°F",
+        "C",
+        "F"
+      ]
+    },
+    "Indoor_Power": {
+      "device_class": "power",
+      "contains_all": [
+        "indoor",
+        "power"
+      ],
+      "excludes": [
+        "daily",
+        "total",
+        "energy"
+      ],
+      "units": [
+        "W",
+        "kW"
+      ]
+    },
+    "Defrost": {
+      "contains": [
+        "defrost"
+      ],
+      "excludes": [
+        "count",
+        "time",
+        "total",
+        "daily"
+      ]
+    },
+    "ValveMode": {
+      "patterns": [
+        "3_?way",
+        "three_way",
+        "diverter",
+        "4067"
+      ]
+    },
+    "Target_Flow": {
+      "contains": [
+        "water_law",
+        "weather_comp",
+        "wl_target",
+        "flow_target"
+      ],
+      "excludes": [
+        "offset",
+        "type"
+      ],
+      "units": [
+        "°C",
+        "°F",
+        "C",
+        "F"
+      ]
+    }
+  },
+  "notes": [
+    "Conservative fallback mapping based on device class, units, and name patterns."
+  ],
+  "priority": 90
+}

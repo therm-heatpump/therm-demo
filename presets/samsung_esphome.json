@@ -1,0 +1,121 @@
+{
+  "id": "samsung_esphome",
+  "name": "Samsung EHS via ESPHome (NASA bus)",
+  "priority": 20,
+  "match": {
+    "platform": "esphome"
+  },
+  "role_provenance": {
+    "Power": "heat_pump_estimate"
+  },
+  "sources": [
+    "https://github.com/omerfaruk-aran/esphome_samsung_hvac_bus (formerly lanwin/esphome_samsung_ac; example.yaml keys)",
+    "https://github.com/Beormund/esphome-samsung-nasa (flow_temp 0x4238, return_temp 0x4236, …)",
+    "ESPHome entity ids are <device>_<name>, so keys match the end of the entity id"
+  ],
+  "roles": {
+    "FlowTemp": {
+      "keys": [
+        "flow_temp",
+        "water_outlet_temperature",
+        "water_out_temperature",
+        "leaving_water_temperature",
+        "flow_temperature"
+      ],
+      "device_class": "temperature",
+      "excludes": [
+        "target",
+        "set"
+      ]
+    },
+    "ReturnTemp": {
+      "keys": [
+        "return_temp",
+        "water_inlet_temperature",
+        "water_in_temperature",
+        "return_water_temperature",
+        "return_temperature"
+      ],
+      "device_class": "temperature"
+    },
+    "OutdoorTemp": {
+      "keys": [
+        "outdoor_temp",
+        "outdoor_temperature",
+        "outside_temperature"
+      ],
+      "device_class": "temperature"
+    },
+    "FlowRate": {
+      "keys": [
+        "flow_rate",
+        "water_flow",
+        "water_flow_rate"
+      ]
+    },
+    "Freq": {
+      "keys": [
+        "compressor_frequency",
+        "compressor_current_frequency"
+      ]
+    },
+    "Power": {
+      "keys": [
+        "outdoor_power",
+        "outdoor_instantaneous_power",
+        "outdoor_unit_power"
+      ],
+      "device_class": "power"
+    },
+    "Indoor_Power": {
+      "keys": [
+        "indoor_power",
+        "indoor_unit_power"
+      ],
+      "device_class": "power"
+    },
+    "DHW_Temp": {
+      "keys": [
+        "hot_water_current_temp",
+        "dhw_temperature",
+        "dhw_tank_temperature",
+        "hot_water_temperature",
+        "warm_water",
+        "water_temperature"
+      ],
+      "device_class": "temperature"
+    },
+    "Target_Flow": {
+      "keys": [
+        "water_law_target_temperature",
+        "water_law_target",
+        "water_outlet_target_temperature"
+      ]
+    },
+    "Defrost": {
+      "keys": [
+        "defrost_status",
+        "defrost"
+      ]
+    },
+    "ValveMode": {
+      "keys": [
+        "3way_valve",
+        "three_way_valve",
+        "3_way_valve"
+      ]
+    }
+  },
+  "comparison": {
+    "Engine_Heat_Power": {
+      "keys": [
+        "generated_power",
+        "heat_output",
+        "power_generation"
+      ]
+    }
+  },
+  "notes": [
+    "ESPHome sensor names are chosen in each user's YAML; unmatched roles fall back to generic name and device-class matching."
+  ]
+}

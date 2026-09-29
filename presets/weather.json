@@ -1,0 +1,27 @@
+{
+  "id": "weather",
+  "name": "Weather: local station (primary) and weather service (secondary)",
+  "priority": 30,
+  "sources": [
+    "Local stations: Ecowitt, Netatmo, Davis, WeatherFlow (entity ids like ecowitt_weather_humidity)",
+    "Services: OpenWeatherMap, Met Éireann / Met.no, Pirate Weather, AccuWeather"
+  ],
+  "roles": {
+    "Outdoor_Humidity": {"keys": ["weather_humidity", "outdoor_humidity", "outside_humidity"],
+                         "excludes": ["indoor", "openweathermap", "met_", "pirate", "accuweather", "forecast"]},
+    "Wind_Speed": {"keys": ["weather_wind_speed", "wind_speed"],
+                   "excludes": ["gust", "max", "openweathermap", "met_", "pirate", "accuweather", "forecast"]},
+    "Solar_Rad": {"keys": ["solar_radiation", "solar_irradiance", "weather_solar_radiation"],
+                  "excludes": ["openweathermap", "met_", "forecast"]},
+    "OutdoorTemp_Secondary": {"keys": ["openweathermap_temperature", "met_eireann_temperature", "met_no_temperature",
+                                       "pirate_weather_temperature", "accuweather_temperature"]},
+    "Outdoor_Humidity_Secondary": {"keys": ["openweathermap_humidity", "met_eireann_humidity", "met_no_humidity",
+                                            "pirate_weather_humidity", "accuweather_humidity"]},
+    "Wind_Speed_Secondary": {"keys": ["openweathermap_wind_speed", "met_eireann_wind_speed", "met_no_wind_speed",
+                                      "pirate_weather_wind_speed", "accuweather_wind_speed"]},
+    "Solar_Rad_Secondary": {"keys": ["openweathermap_uv_index", "pirate_weather_uv_index", "accuweather_uv_index", "uv_index"]}
+  },
+  "notes": [
+    "The heat pump's own outdoor sensor stays the primary OutdoorTemp; a weather service is suggested as its secondary."
+  ]
+}
