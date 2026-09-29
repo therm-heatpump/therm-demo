@@ -16,12 +16,21 @@ from datetime import date
 from pathlib import Path
 
 # Locate root directory and application code:
-# - In the public release repo (therm-heatpump/therm), app code lives in therm/app/
-# - In the development repo (brian-kehoe/therm-dev), app code lives in the root
-ROOT = Path(__file__).resolve().parents[1]
-if (ROOT / "therm" / "app" / "app.py").exists():
+# - In therm-demo: streamlit_app.py is in the repo root next to app.py
+# - In therm-dev-demo: streamlit_app.py is in demo/ and app.py is in the repo root
+# - In therm-public (if used): app.py is in therm/app/
+FILE_DIR = Path(__file__).resolve().parent
+if (FILE_DIR / "app.py").exists():
+    ROOT = FILE_DIR
+    APP_DIR = FILE_DIR
+elif (FILE_DIR.parent / "app.py").exists():
+    ROOT = FILE_DIR.parent
+    APP_DIR = ROOT
+elif (FILE_DIR.parent / "therm" / "app" / "app.py").exists():
+    ROOT = FILE_DIR.parent
     APP_DIR = ROOT / "therm" / "app"
 else:
+    ROOT = FILE_DIR
     APP_DIR = ROOT
 
 os.chdir(APP_DIR)
