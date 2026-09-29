@@ -1,4 +1,7 @@
-<p align="center"><img src="assets/therm_logo.png" alt="therm logo" width="160"></p>
+<p align="center">
+  <img src="assets/therm_logo.png" alt="therm logo" width="160"><br><br>
+  <a href="https://therm-heatpump.streamlit.app/"><img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Live Demo"></a>
+</p>
 
 # therm — Interactive Demo
 
@@ -9,7 +12,7 @@ This repository hosts the live interactive demo of **[therm](https://github.com/
 **therm** (Thermal Health & Efficiency Reporting Module) is an analysis dashboard for heat pumps running as a Home Assistant add-on. It analyses heat pump COP, heating and hot-water runs, defrosts, cycling, and sensor data quality from Home Assistant history or InfluxDB.
 
 - **Main Add-on Repository:** [github.com/therm-heatpump/therm](https://github.com/therm-heatpump/therm)
-- **Live Demo:** [therm-demo.streamlit.app](https://therm-demo.streamlit.app)
+- **Live Demo:** [therm-heatpump.streamlit.app](https://therm-heatpump.streamlit.app/)
 
 ### Demo Dataset
 
